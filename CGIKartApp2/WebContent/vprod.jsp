@@ -8,11 +8,5 @@
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
-
-<h1>Welcome Admin </h1>
-<a href="addprod.jsp" >add products</a>
-<a href="vprod.jsp" >view  products</a>
-
 </body>
 </html>
