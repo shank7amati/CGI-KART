@@ -7,22 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<jsp:include page="header.jsp"></jsp:include>
-
-<h1>Welcome Admin </h1>
-<a href="addprod.jsp" >add products</a>
-<a href="vprod.jsp" >view  products</a>
-
-<form action="viewProduct">
-
-Enter product category:
-<input type="text" name="prod_category"/>
-<br/>
-<input type="submit"/>
-
-</form>
-
-<a href="deleteprod.jsp" >delete products</a>
+product added
 </body>
 </html>

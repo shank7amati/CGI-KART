@@ -1,6 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -18,6 +22,16 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+}
+
+/* Style the categories heading */
+.topnav1  a{
+    float: left;
+    color: "black"   ;
+    text-align: top;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 15px;
 }
 
 /* Change the color of links on hover */
@@ -176,64 +190,23 @@ body {
   <br>
 <input id="button" type="button" onMouseOver="User Login" value="Login"> 
 <input id="buttonCart" type="button" onMouseOver="Add to Cart" value="Cart">
-<!-- 
-
-<br>
-<input id="button" type="button" onMouseOver="User Login" value="Login"> 
-<input id="buttonCart" type="button" onMouseOver="Add to Cart" value="Cart">
-<div style="overflow:auto" align="center">
-  <div class="menu">
-    <hr>
-    <input class="menuitem" type="button" value="Lifestyle">
-    <input class="menuitem" type="button" value="Electronics">
-    <input class="menuitem" type="button" value="Fashion">
-    <input class="menuitem" type="button" value="Stationary">
-    <hr>
-  </div>
-</div>
-
- -->
-
 
 <div class="topnav">
-<a href="Home.html">Home</a>
   <a class="active" href="Lifestyle.jsp">Lifestyle</a>
   <a href="Electronics.jsp">Electronics</a>
   <a href="Fashion.jsp">Fashion</a>
   <a href="Stationary.jsp">Stationary</a>
-  
+  <a href="index.jsp">Home</a>
+</div>
+
+<div class="topnav1">
+<h2 align="center" ><b>FASHION ITEMS</b></h2>
 </div>
 
 
-<div class="column"> 
-  <div class="row">
-  <a href="Fashion.jsp">
-    <img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images"  style="width:100%">
-    </a>
-    <a href="Stationary.jsp">
-    <img src="images/stationary.jpg" style="width:100%">
-    </a>
-    </div>
-  </div>
-  
-<div class="column"> 
-  <div class="row">
-  <a href="Electronics.jsp">
-     <img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images" id="ec" onMouseover="displayQuote();" style="width:100%">
-     </a>
-    <a href="Lifestyle.jsp">
-    <img src="images/home.jpg" style="width:100%">
-    </a>
-   
-  </div>
-  
 
- </div>
-	
- <img  src="images/log.jpg" height="200" width="1325 ">
- 
- 
-
+</head>
+<body>
 
 </body>
 </html>

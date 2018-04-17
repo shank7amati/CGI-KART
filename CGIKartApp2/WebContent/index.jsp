@@ -1,101 +1,218 @@
-<body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<jsp:include page="header.jsp"></jsp:include>
 
-<table cellspacing=100>
-<tr>
-<td align=left>
-<h2> Login </h2>
-<form method="post" name="login" action="LoginServlet"  onsubmit="return(validate());">
+<style>
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
 
-	<table  cell>
-		<tr>
-			<td>Enter Username: </td>
-			<td><input type="text" name="username"/></td>
-		</tr>
-		<tr>
-			<td>Enter Password:</td>
-			<td> <input type="password" name="password"/></td>
-		</tr>
-		<tr>
-			<td><input type="submit" value="Login"/></td>
-		</tr>	
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #EF4D29    ;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
 
-</table>
-</form>
-</td>
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color:#FE0C01;
+    color: white ;
+}
 
-<td align=right>
-<h2>Admin Login </h2>
-<form method="post" name="adminlogin" action="adminlogin" >
+/* Add a color to the active/current link */
+/* .topnav a.active { 
+   background-color:#FE0C01;
+    color:white;
+}   */
 
-<table>
-		<tr>
-			<td>Enter Username: </td>
-			<td><input type="text" name="username"/></td>
-		</tr>
-		<tr>
-			<td>Enter Password:</td>
-			<td> <input type="password" name="password"/></td>
-		</tr>
-		<tr>
-			<td><input type="submit" value="Login"/></td>
-		</tr>	
-		
-		<font color=red>${msg2}</font>
+-->
 
-</table>
-</form>
-</td>
-</tr>
-</table>
+* {
+    box-sizing: border-box;
+}
 
-<form action="Signup.jsp">
-<input type="submit" value="Register"/>
-</form>
-<font color=red>${msg}</font>
+body {
+    margin: 400;
+    font-family: Arial;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: right;
+    width: 50%;
+    padding: 50px;
+}
+
+.column img {
+    margin-top:50px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+
+.column img {
+    margin-top: 12px;
+}
+
+#button {
+    line-height: 12px;
+    width: 60px;
+    font-size: 13pt;
+    font-family: arial;
+    margin-top: 07px;
+    margin-right: 15px;
+    padding: 10px;
+    background:#D21212;
+  border-bottom: 1px solid #f1f1f1;
+    position: absolute;
+    top: 10;
+    right: 0;
+}
+#buttonCart {
+    line-height: 12px;
+    width: 60px;
+    font-size: 13pt;
+    font-family: arial;
+    margin-top: 07px;
+    margin-right: 85px;
+    padding: 10px;
+    background:#D21212;
+  border-bottom: 1px solid #f1f1f1;
+    position: absolute;
+    top: 10;
+    right: 0;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.main {
+ 
+  width: 50%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 100%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+
+
+</style>
+</head>
+<body style="font-family:Verdana;">
+<div style="background-color:#B22222;padding:8px;">
+
+
+<img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\cgi1.png"  style="float: left;
+  width: 150px;
+  height: 100px;
+  background: #555;
+  "><br>
+  
+  
+  <font face="arial" size="5" color="white"  style="
+  text-align:center;
+  top: 18px;
+  right: 50px;">
+  <h2><b>CGI-KART</b></h2></font>
+  
+  <font size="1"  >Experience the commitment. </font>
+  </div>
+  <!-- <jsp:include page="header.jsp"></jsp:include> -->
+  <br>
+ 
+ <form action="login.jsp">
+ <input id="button" type="submit"  value="Login">
+ </form> 
+  
+<input id="buttonCart" type="submit"  value="Cart">
+
+<div class="topnav">
+<a href="index.jsp">Home</a>
+  <a class="active" href="Lifestyle.jsp">Lifestyle</a>
+  <a href="Electronics.jsp">Electronics</a>
+  <a href="Fashion.jsp">Fashion</a>
+  <a href="Stationary.jsp">Stationary</a>
+  
+</div>
+
+
+<div class="column"> 
+  <div class="row">
+  <a href="Fashion.jsp">
+    <img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\fashion.jpg"  style="width:100%">
+    </a>
+    <a href="Stationary.jsp">
+    <img src="C:\Users\CGI\Desktop\Shopping\WebContent\images\stationary.jpg" style="width:100%">
+    </a>
+    </div>
+  </div>
+  
+<div class="column"> 
+  <div class="row">
+  <a href="Electronics.jsp">
+     <img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\gadgets.jpg" id="ec" onMouseover="displayQuote();" style="width:100%">
+     </a>
+    <a href="Lifestyle.jsp">
+    <img src="C:\Users\CGI\Desktop\Shopping\WebContent\images\home.jpg" style="width:100%">
+    </a>
+   
+  </div>
+  
+
+ </div>
+	
+ <img  src="C:\Users\CGI\Desktop\Shopping\WebContent\images\log.jpg" height="200" width="1325 ">
+ 
+ 
+
+
 </body>
-<script type="text/javascript">
-
-function validate()
-{
-	if(document.login.username.value=="")
-		{
-		alert("Please provide a valid Username...");
-		document.myform.name.focus();
-		return false;
-		}
-    return( true );
-	
-	}
-
-</script>
-
-
-<!--  <a href="create"> create </a>-->
-
-
-<%//@page import="com.cgikart.bean.*, com.cgikart.dao.*" %>
-<%
-
-/*
-
-
-Customer c=new Customer();
-	c.setAddress("Bangalre");
-	c.setEmail("hello@gmail.com");
-	c.setMobile(93939393993L);
-	c.setName("mohan");
-	c.setPassword("secret");
-	c.setUsername("heljlonaffmhhjjke1");
-	
-	CustomerDaoInterface dao=new CustomerDaoImpl();
-	out.println(dao.createCustomer(c));
-	*/
-	%>
-	
-	
-	
-	<img src="home.jpg" height= 300 width=300 alt="image is not able to display"/>
-	
-	<a href="bishal.jsp"> bishal</a>
+</html>

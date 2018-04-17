@@ -40,7 +40,7 @@ public class CustomerController {
 	@RequestMapping(value="/adminlogin")
 	public String adminLogin(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap model)
 	{
-		int temp=0;
+		//int temp=0;
 		if(username.equals("admin")&&password.equals("admin"))
 		{
 			return "Adminpage";
