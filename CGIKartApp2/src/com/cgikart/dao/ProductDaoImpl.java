@@ -14,6 +14,7 @@ import org.hibernate.Transaction;
 import com.cgikart.util.HibernateUtil;
 import com.cgikart.bean.*;
 
+//add products
 public class ProductDaoImpl implements ProductDaoInterface {
 
 	@Override
@@ -38,7 +39,7 @@ public class ProductDaoImpl implements ProductDaoInterface {
 		}
 	
 	
-	
+// list product by category
 	public List<Product>  getProductByCategory(String category)
 	{
 		
@@ -49,15 +50,29 @@ public class ProductDaoImpl implements ProductDaoInterface {
 //		List results = query.list();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
+		//int id = 0;
+		List<Product> results=null;
+		try {
 			transaction = session.beginTransaction();
 			String hql = "FROM Product  WHERE prod_category =:cat";
 			Query query = session.createQuery(hql);
 			query.setParameter("cat", category);//    setParameter("cat", category);   
 			
-		List<Product> results=query.getResultList();
+		 results=query.getResultList();
+		
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 		return results;
+		}
+		
 		
 	}
 	
 
-}
+// product list with delete
+
+

@@ -1,25 +1,238 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style>
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #EF4D29    ;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color:#FE0C01;
+    color: white ;
+}
+
+/* Add a color to the active/current link */
+/* .topnav a.active { 
+   background-color:#FE0C01;
+    color:white;
+}   */
+
+-->
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 400;
+    font-family: Arial;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: right;
+    width: 50%;
+    padding: 50px;
+}
+
+.column img {
+    margin-top:50px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+
+.column img {
+    margin-top: 12px;
+}
+
+#button {
+    line-height: 12px;
+    width: 60px;
+    font-size: 13pt;
+    font-family: arial;
+    margin-top: 07px;
+    margin-right: 15px;
+    padding: 10px;
+    background:#D21212;
+  border-bottom: 1px solid #f1f1f1;
+    position: absolute;
+    top: 10;
+    right: 0;
+}
+#buttonCart {
+    line-height: 12px;
+    width: 60px;
+    font-size: 13pt;
+    font-family: arial;
+    margin-top: 07px;
+    margin-right: 85px;
+    padding: 10px;
+    background:#D21212;
+  border-bottom: 1px solid #f1f1f1;
+    position: absolute;
+    top: 10;
+    right: 0;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.menu {
+  float: left;
+  width: 100%;
+}
+.menuitem {
+  padding: 10px;
+  margin-top: 8px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.main {
+ 
+  width: 50%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 100%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+
+
+</style>
 </head>
-<body>
-<jsp:include page="header.jsp"></jsp:include>
-
-<h2>Welcome to CGI-<i>kart</i></h2>
-
-<table align=center>
-<tr><td><img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\electronics.jpg" alt="Electronics" height="300" width="500"></td>
-<td><img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\home.jpg" alt="Home Appliances" height="300" width="500"></td></tr>
-
-<tr><td><img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\lifestyle.jpg" alt="Life Style"  height="300" width="500"></td>
-<td><img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images/stationary.jpg" alt="Stationary" height="300" width="500"></td></tr>
+<body style="font-family:Verdana;">
+<div style="background-color:#B22222;padding:8px;">
 
 
+<img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\cgi1.png"  style="float: left;
+  width: 150px;
+  height: 100px;
+  background: #555;
+  "><br>
+  
+  
+  <font face="arial" size="5" color="white"  style="
+  text-align:center;
+  top: 18px;
+  right: 50px;">
+  <h2><b>CGI-KART</b></h2></font>
+  
+  <font size="1"  >Experience the commitment. </font>
+  </div>
+  <br>
+<input id="button" type="button" onMouseOver="User Login" value="Login"> 
+<input id="buttonCart" type="button" onMouseOver="Add to Cart" value="Cart">
+<!-- 
 
-</table>
+<br>
+<input id="button" type="button" onMouseOver="User Login" value="Login"> 
+<input id="buttonCart" type="button" onMouseOver="Add to Cart" value="Cart">
+<div style="overflow:auto" align="center">
+  <div class="menu">
+    <hr>
+    <input class="menuitem" type="button" value="Lifestyle">
+    <input class="menuitem" type="button" value="Electronics">
+    <input class="menuitem" type="button" value="Fashion">
+    <input class="menuitem" type="button" value="Stationary">
+    <hr>
+  </div>
+</div>
+
+ -->
+
+
+<div class="topnav">
+<a href="Home.html">Home</a>
+  <a class="active" href="Lifestyle.jsp">Lifestyle</a>
+  <a href="Electronics.jsp">Electronics</a>
+  <a href="Fashion.jsp">Fashion</a>
+  <a href="Stationary.jsp">Stationary</a>
+  
+</div>
+
+
+<div class="column"> 
+  <div class="row">
+  <a href="Fashion.jsp">
+    <img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images"  style="width:100%">
+    </a>
+    <a href="Stationary.jsp">
+    <img src="images/stationary.jpg" style="width:100%">
+    </a>
+    </div>
+  </div>
+  
+<div class="column"> 
+  <div class="row">
+  <a href="Electronics.jsp">
+     <img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images" id="ec" onMouseover="displayQuote();" style="width:100%">
+     </a>
+    <a href="Lifestyle.jsp">
+    <img src="images/home.jpg" style="width:100%">
+    </a>
+   
+  </div>
+  
+
+ </div>
+	
+ <img  src="images/log.jpg" height="200" width="1325 ">
+ 
+ 
 
 
 </body>

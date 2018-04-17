@@ -1,5 +1,7 @@
 package com.cgikart.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ public class ProductController {
 
 	
 	@RequestMapping(value="/createProduct")
-	public String createCustomer(@RequestParam("prod_name") String prod_name,@RequestParam("prod_price") int prod_price ,@RequestParam("prod_desc") String prod_desc,@RequestParam("prod_category") String prod_category, @RequestParam("stock") int stock,@RequestParam("path") String path,ModelMap model) 
+	public String createProduct(@RequestParam("prod_name") String prod_name,@RequestParam("prod_price") int prod_price ,@RequestParam("prod_desc") String prod_desc,@RequestParam("prod_category") String prod_category, @RequestParam("stock") int stock,@RequestParam("path") String path,ModelMap model) 
 	{
 		Product p=new Product();
 		
@@ -56,4 +58,21 @@ public class ProductController {
 //		//System.out.println(" inside login method");
 //		//return "customeradded";
 //	}
+	
+	@RequestMapping(value="/viewProduct")
+	public String createProduct(@RequestParam("prod_category") String prod_category,ModelMap model)
+	{
+		ProductDaoInterface dao=new ProductDaoImpl();
+		List <Product>l=dao.getProductByCategory(prod_category);
+		
+		for(Product p:l)
+		{
+			System.out.println(p.getPath());
+		}
+		model.addAttribute("prod_list",l);
+		
+		return "vprod";
+	}
 }
+
+	
