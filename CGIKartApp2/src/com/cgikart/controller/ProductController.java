@@ -60,7 +60,9 @@ public class ProductController {
 //	}
 	
 	@RequestMapping(value="/viewProduct")
+
 	public String viewProduct(@RequestParam("prod_category") String prod_category,ModelMap model)
+
 	{
 		ProductDaoInterface dao=new ProductDaoImpl();
 		List <Product>l=dao.getProductByCategory(prod_category);
@@ -73,6 +75,7 @@ public class ProductController {
 		
 		return "vprod";
 	}
+
 	@RequestMapping(value="/searchProduct")
 	public String searchProduct(@RequestParam("prod_name") String prod_name,ModelMap model)
 	{
@@ -83,6 +86,7 @@ public class ProductController {
 		
 		return "product_details";
 	}
+
 }
 
 	

@@ -11,6 +11,7 @@
 <body>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 	<form action="searchProduct">
 		<input type="text" name="prod_name" >
 		<input type="submit" value="search">

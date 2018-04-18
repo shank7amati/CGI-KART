@@ -59,6 +59,7 @@ public class ProductDaoImpl implements ProductDaoInterface {
 			query.setParameter("cat", category);//    setParameter("cat", category);   
 			
 		 results=query.getResultList();
+
 		
 		} catch (HibernateException e) {
 			transaction.rollback();
@@ -74,9 +75,7 @@ public class ProductDaoImpl implements ProductDaoInterface {
 
 	//Search product
 	public Product  searchProductByName(String prod_name)
-	{
-		
-		
+	{		
 	//	// select * from Product where category=?
 	//	String hql = "FROM Employee E WHERE E.id = 10";
 	//	Query query = session.createQuery(hql);
@@ -101,11 +100,8 @@ public class ProductDaoImpl implements ProductDaoInterface {
 	}
 	return result;
 	}
-	
-	
-}
 
 
 // product list with delete
 
-
+}
