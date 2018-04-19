@@ -147,25 +147,10 @@ body {
 </style>
 </head>
 <body style="font-family:Verdana;">
-<div style="background-color:#B22222;padding:8px;">
 
-
-<img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\cgi1.png"  style="float: left;
-  width: 150px;
-  height: 100px;
-  background: #555;
-  "><br>
+   <jsp:include page="header.jsp"></jsp:include>
   
   
-  <font face="arial" size="5" color="white"  style="
-  text-align:center;
-  top: 18px;
-  right: 50px;">
-  <h2><b>CGI-KART</b></h2></font>
-  
-  <font size="1"  >Experience the commitment. </font>
-  </div>
-  <!-- <jsp:include page="header.jsp"></jsp:include> -->
   <br>
  
  <form action="login.jsp">

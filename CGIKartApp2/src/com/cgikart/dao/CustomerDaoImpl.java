@@ -1,10 +1,13 @@
 package com.cgikart.dao;
 import com.cgikart.util.*;
+import javax.persistence.Query;
+
 
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 
@@ -37,6 +40,42 @@ public class CustomerDaoImpl implements CustomerDaoInterface {
 		
 		return id;
 		}
+
+	@Override
+	public boolean loginCustomer(String username, String password) {
+		// TODO Auto-generated method stub
+		boolean userFound = false;
+		//Query using Hibernate Query Language
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+		
+		String hql =" FROM Customer  WHERE username=:username and password=:password";
+		Query query = session.createQuery(hql);
+		query.setParameter("username",username);
+		query.setParameter("password",password);
+		
+		 Customer result=(Customer) query.getSingleResult();
+		 System.out.println("login "+result);
+			if ((result != null)) {
+				userFound= true;
+				transaction.commit();
+			}
+		}
+		catch (javax.persistence.NoResultException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} 
+		catch(HibernateException e){
+			transaction.rollback();
+			e.printStackTrace();
+		}
+		
+		finally {
+		session.close();}
+		return userFound;
+	}
 
 	
 

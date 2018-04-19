@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
+
 <h1>Sign up completed. You can <a href='index.jsp'>login now</a></h1>
 </body>
 </html>

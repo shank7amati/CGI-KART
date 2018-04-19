@@ -1,4 +1,5 @@
 <body>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style>
 #button {
@@ -23,7 +24,7 @@
 <h2> Login </h2>
 
 <hr>
-<form method="post" name="login" action="LoginServlet"  onsubmit="return(validate());">
+<form method="post" name="login" action="login"  onsubmit="return(validate());">
 
 	<table  cell>
 		<tr>
@@ -34,13 +35,20 @@
 			<td>Enter Password:</td>
 			<td> <input type="password" name="password"/></td>
 		</tr>
+
 		<tr>
 			<td><input id="button" type="submit" value="Login"/></td>
 		</tr>	
 
 </table>
+<span style="float: left;">
+<c:if test="${login_error}">
+ <font color="red">Incorrect Username or Password</font>
+</c:if>
+</span>
 </form>
 </td>
+
 <hr>
 <td align=right>
 <h2>Admin Login </h2>

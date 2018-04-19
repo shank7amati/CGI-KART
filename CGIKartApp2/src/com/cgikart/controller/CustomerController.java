@@ -1,5 +1,9 @@
 package com.cgikart.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,19 @@ import com.cgikart.dao.CustomerDaoInterface;
 
 @Controller
 public class CustomerController {
+	@RequestMapping(value="/login")
+	public String loginCustomer(@RequestParam("username") String username,
+			@RequestParam("password") String password ,ModelMap model, HttpSession session) 
+	{
+		
+		CustomerDaoInterface dao=new CustomerDaoImpl();
+		boolean result=dao.loginCustomer(username, password);
+		model.addAttribute("login_error",!result);           
+		if(result)
+			return "index";
+		else
+			return "login";
+	}
 
 
 	

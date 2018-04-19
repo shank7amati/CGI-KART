@@ -169,24 +169,8 @@ body {
 </style>
 </head>
 <body style="font-family:Verdana;">
-<div style="background-color:#B22222;padding:8px;">
+<jsp:include page="header.jsp"></jsp:include>
 
-
-<img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\cgi1.png"  style="float: left;
-  width: 150px;
-  height: 100px;
-  background: #555;
-  "><br>
-  
-  
-  <font face="arial" size="5" color="white"  style="
-  text-align:center;
-  top: 18px;
-  right: 50px;">
-  <h2><b>CGI-KART</b></h2></font>
-  
-  <font size="1"  >Experience the commitment. </font>
-  </div>
   <br>
 <input id="button" type="button" onMouseOver="User Login" value="Login"> 
 <input id="buttonCart" type="button" onMouseOver="Add to Cart" value="Cart">
