@@ -11,18 +11,27 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <h1>Welcome Admin </h1>
-<a href="addprod.jsp" >add products</a>
-<a href="vprod.jsp" >view  products</a>
 
+<ul>
+<li><a href="addprod.jsp" >Add Product</a></li>
+<li><a href="viewAllProduct" >View or Modify Products</a></li>
+
+<li>
 <form action="viewProduct">
-
-Enter product category:
-<input type="text" name="prod_category"/>
+Enter product category to view:
+<select name="prod_category">
+  <option value="electronics">Electronics</option>
+  <option value="fashion">Fashion</option>
+  <option value="homeapp">Home Appliances</option>
+  <option value="stationary">Stationery</option>
+</select>
 <br/>
-<input type="submit"/>
+<input type="submit" value="View"/>
 
 </form>
+</li>
+</ul>
 
-<a href="deleteprod.jsp" >delete products</a>
+<!-- <a href="deleteprod.jsp" >delete products</a> -->
 </body>
 </html>

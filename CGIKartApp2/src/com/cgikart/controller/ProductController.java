@@ -34,7 +34,7 @@ public class ProductController {
 		int result=dao.createProduct(p);
 		
 		model.addAttribute("result",result);
-		return "productadded";  
+		return "redirect:/viewAllProduct";  
 	}
 	
 	
@@ -66,15 +66,22 @@ public class ProductController {
 	{
 		ProductDaoInterface dao=new ProductDaoImpl();
 		List <Product>l=dao.getProductByCategory(prod_category);
-		
-		for(Product p:l)
-		{
-			System.out.println(p.getPath());
-		}
 		model.addAttribute("prod_list",l);
 		
 		return "vprod";
 	}
+	@RequestMapping(value="/viewAllProduct")
+
+	public String viewAllProduct(ModelMap model)
+
+	{
+		ProductDaoInterface dao=new ProductDaoImpl();
+		List <Product>l=dao.getAllProduct();
+		model.addAttribute("prod_list",l);
+		
+		return "vprod";
+	}
+
 
 	@RequestMapping(value="/searchProduct")
 	public String searchProduct(@RequestParam("prod_name") String prod_name,ModelMap model)
@@ -86,6 +93,44 @@ public class ProductController {
 		
 		return "product_details";
 	}
+	
+	@RequestMapping(value="/deleteProduct")
+	public String deleteProduct(@RequestParam("prod_id") String prod_id,ModelMap model)
+	{
+		ProductDaoInterface dao=new ProductDaoImpl();
+		int result=dao.deleteProductById(Integer.parseInt(prod_id));
+		model.addAttribute("result_delete",result);
+		return "redirect:/viewAllProduct";
+	}
+	@RequestMapping(value="/searchProductById")
+	public String searchProductById(@RequestParam("prod_id") String prod_id,ModelMap model)
+	{
+		ProductDaoInterface dao=new ProductDaoImpl();
+		Product prd=dao.searchProductById(Integer.parseInt(prod_id));
+		model.addAttribute("product",prd);
+		
+		return "updateproduct";
+	}
+
+	@RequestMapping(value="/updateProduct")
+	public String updateProduct(@RequestParam("prod_id") int prod_id ,@RequestParam("prod_name") String prod_name,@RequestParam("prod_price") int prod_price ,@RequestParam("prod_desc") String prod_desc,@RequestParam("prod_category") String prod_category, @RequestParam("stock") int stock,@RequestParam("path") String path,ModelMap model) 
+	{
+		Product p=new Product();
+		p.setProd_id(prod_id);
+		p.setProd_name(prod_name);
+		p.setProd_price(prod_price);
+		p.setProd_desc(prod_desc);
+		p.setProd_category(prod_category);
+		p.setStock(stock);
+		p.setPath(path);
+		
+		ProductDaoInterface dao=new ProductDaoImpl();
+		int result=dao.updateProductById(p);
+		
+		model.addAttribute("result_update",result);
+		return "redirect:/viewAllProduct";
+	}
+
 
 }
 

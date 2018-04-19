@@ -9,13 +9,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-	<form action="searchProduct">
+<form action="searchProduct">
 		<input type="text" name="prod_name" >
 		<input type="submit" value="search">
 	</form>
+<spring:url value="/addprod.jsp" var="addUrl" /> 
+
+	<input type="button" onclick="location.href='${addUrl}'" value="Add Product">
+
+
      
     <div align="center">
         <table border="1" cellpadding="5">
@@ -29,11 +37,15 @@
                 <th>PRICE</th>
 				<th>DESCRIPTION</th>
 				<th>CATEGORY</th>
-				<th>STOCK</th>                
-                
+				<th>STOCK</th>         
+				<th>DELETE</th>       
+				<th>UPDATE</th>                       
                
             </tr>
             <c:forEach items="${prod_list}" var="product" >
+
+<spring:url value="/deleteProduct?prod_id=${product.prod_id}" var="deleteUrl" /> 
+<spring:url value="/searchProductById?prod_id=${product.prod_id}" var="updateUrl" /> 
                 <tr>
 					<td><img width=100 height=100 src="${product.path }"/></td>
                     <td><c:out value="${product.prod_id}" /></td>
@@ -42,7 +54,8 @@
 					<td><c:out value="${product.prod_desc}" /></td>
 					<td><c:out value="${product.prod_category}" /></td>
 					<td><c:out value="${product.stock}" /></td>                           
-
+					<td><input type="button" onclick="location.href='${deleteUrl}'" value="delete "></td>
+					<td><input type="button" onclick="location.href='${updateUrl}'" value="update "></td>
 				</tr>
             </c:forEach>
         </table>

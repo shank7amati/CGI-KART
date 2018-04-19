@@ -69,20 +69,37 @@ public class ProductDaoImpl implements ProductDaoInterface {
 		}
 		return results;
 		}
+	
+	public List<Product>  getAllProduct()
+	{
 		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		List<Product> results=null;
+		try {
+			transaction = session.beginTransaction();
+			String hql = "FROM Product";
+			Query query = session.createQuery(hql);  
+			
+		 results=query.getResultList();
+
 		
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return results;
+		}
 	
 
 	//Search product
 	public Product  searchProductByName(String prod_name)
 	{		
-	//	// select * from Product where category=?
-	//	String hql = "FROM Employee E WHERE E.id = 10";
-	//	Query query = session.createQuery(hql);
-	//	List results = query.list();
+	
 	Session session = HibernateUtil.getSessionFactory().openSession();
 	Transaction transaction = null;
-	//int id = 0;
 	Product result=null;
 	try {
 		transaction = session.beginTransaction();
@@ -103,5 +120,69 @@ public class ProductDaoImpl implements ProductDaoInterface {
 
 
 // product list with delete
+	public int deleteProductById(int id)
+	{
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		int result=0;
+		try {
+			transaction = session.beginTransaction();
+			String hql = "DELETE Product WHERE prod_id =:pid";
+			Query query = session.createQuery(hql);
+			query.setParameter("pid", id);
+		  result=query.executeUpdate();
+			transaction.commit();
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+			return result;
+	}
+
+
+	@Override
+	public int updateProductById(Product p) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		int result=0;
+		try {
+			transaction = session.beginTransaction();
+			session.update(p);
+			transaction.commit();
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+			return result;
+	}
+
+
+	@Override
+	public Product searchProductById(int prod_id) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		Product result=null;
+		try {
+			transaction = session.beginTransaction();
+			String hql = "FROM Product  WHERE prod_id = :prod_id";
+			Query query = session.createQuery(hql);
+			query.setParameter("prod_id", prod_id);//    setParameter("cat", category);   
+			
+		 result=(Product) query.getSingleResult();
+		
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
+	}
 
 }

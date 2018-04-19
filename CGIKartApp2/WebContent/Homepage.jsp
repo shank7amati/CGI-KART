@@ -197,10 +197,10 @@ body {
 
 <div class="topnav">
 <a href="Home.html">Home</a>
-  <a class="active" href="Lifestyle.jsp">Lifestyle</a>
-  <a href="Electronics.jsp">Electronics</a>
-  <a href="Fashion.jsp">Fashion</a>
-  <a href="Stationary.jsp">Stationary</a>
+  <a class="active" href="location.href=viewProduct?prod_category=homeapp">Home Appliances</a>
+  <a href="location.href=viewProduct?prod_category=electronics">Electronics</a>
+  <a href="location.href=viewProduct?prod_category=fashion">Fashion</a>
+  <a href="location.href=viewProduct?prod_category=stationary">Stationary</a>
   
 </div>
 

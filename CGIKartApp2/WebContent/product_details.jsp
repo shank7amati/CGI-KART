@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <h3>Product Name: ${product.prod_name}</h3>
 <img width=100 height=100 src="${product.path }"/>
 <h3>Price</h3>${product.prod_price}
