@@ -19,10 +19,10 @@
 		<input type="text" name="prod_name" >
 		<input type="submit" value="search">
 	</form>
+	<c:if test="${role =='admin'}">
 <spring:url value="/addprod.jsp" var="addUrl" /> 
-
 	<input type="button" onclick="location.href='${addUrl}'" value="Add Product">
-
+</c:if>
 
      
     <div align="center">
@@ -37,9 +37,11 @@
                 <th>PRICE</th>
 				<th>DESCRIPTION</th>
 				<th>CATEGORY</th>
+				<c:if test="${role =='admin'}">
 				<th>STOCK</th>         
 				<th>DELETE</th>       
-				<th>UPDATE</th>                       
+				<th>UPDATE</th>     
+				</c:if>                  
                
             </tr>
             <c:forEach items="${prod_list}" var="product" >
@@ -53,9 +55,11 @@
                     <td><c:out value="${product.prod_price}" /></td>
 					<td><c:out value="${product.prod_desc}" /></td>
 					<td><c:out value="${product.prod_category}" /></td>
+					<c:if test="${role =='admin'}">
 					<td><c:out value="${product.stock}" /></td>                           
 					<td><input type="button" onclick="location.href='${deleteUrl}'" value="delete "></td>
 					<td><input type="button" onclick="location.href='${updateUrl}'" value="update "></td>
+					</c:if>
 				</tr>
             </c:forEach>
         </table>

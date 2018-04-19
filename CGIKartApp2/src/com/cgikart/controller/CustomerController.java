@@ -19,15 +19,36 @@ import com.cgikart.dao.CustomerDaoInterface;
 public class CustomerController {
 	@RequestMapping(value="/login")
 	public String loginCustomer(@RequestParam("username") String username,
-			@RequestParam("password") String password ,ModelMap model, HttpSession session) 
+			@RequestParam("password") String password ,ModelMap model, HttpServletRequest request) 
 	{
 		
 		CustomerDaoInterface dao=new CustomerDaoImpl();
 		boolean result=dao.loginCustomer(username, password);
 		model.addAttribute("login_error",!result);           
 		if(result)
+		{
+			HttpSession session= request.getSession();
+			session.setAttribute("userLoginSession", username);
+			session.setAttribute("role", "customer");
 			return "index";
+		}
 		else
+			return "login";
+	}
+	@RequestMapping(value="/Adminlogin")
+	public String loginAdmin(@RequestParam("username") String username,
+			@RequestParam("password") String password ,ModelMap model, HttpServletRequest request) 
+	{	System.out.println("Admin "+username+" "+password);
+		if(username.equals("admin") && password.equals("admin"))
+		{
+			HttpSession session= request.getSession();
+			session.setAttribute("userLoginSession", username);
+			session.setAttribute("role", "admin");
+			model.addAttribute("login_error",false);
+			return "Adminpage";
+		}
+		else
+			model.addAttribute("login_error",true);
 			return "login";
 	}
 

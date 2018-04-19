@@ -53,7 +53,7 @@
 <td align=right>
 <h2>Admin Login </h2>
 <hr>
-<form method="post" name="adminlogin" action="adminlogin" >
+<form method="post" name="adminlogin" action="Adminlogin" >
 
 <table>
 		<tr>

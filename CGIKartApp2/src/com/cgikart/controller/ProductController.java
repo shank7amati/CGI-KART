@@ -2,6 +2,9 @@ package com.cgikart.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,13 +75,16 @@ public class ProductController {
 	}
 	@RequestMapping(value="/viewAllProduct")
 
-	public String viewAllProduct(ModelMap model)
+	public String viewAllProduct(ModelMap model,HttpServletRequest request)
 
 	{
 		ProductDaoInterface dao=new ProductDaoImpl();
 		List <Product>l=dao.getAllProduct();
 		model.addAttribute("prod_list",l);
-		
+		HttpSession session= request.getSession();
+		String role=(String) session.getAttribute("role");
+		model.addAttribute("role",role);
+		System.out.println(role);
 		return "vprod";
 	}
 
@@ -113,8 +119,13 @@ public class ProductController {
 	}
 
 	@RequestMapping(value="/updateProduct")
-	public String updateProduct(@RequestParam("prod_id") int prod_id ,@RequestParam("prod_name") String prod_name,@RequestParam("prod_price") int prod_price ,@RequestParam("prod_desc") String prod_desc,@RequestParam("prod_category") String prod_category, @RequestParam("stock") int stock,@RequestParam("path") String path,ModelMap model) 
+	public String updateProduct(@RequestParam("prod_id") int prod_id ,@RequestParam("prod_name") String prod_name,
+			@RequestParam("prod_price") int prod_price ,@RequestParam("prod_desc") String prod_desc,
+			@RequestParam("prod_category") String prod_category,
+			@RequestParam("stock") int stock,@RequestParam("path") String path,
+			ModelMap model, HttpServletRequest request) 
 	{
+		
 		Product p=new Product();
 		p.setProd_id(prod_id);
 		p.setProd_name(prod_name);
@@ -126,7 +137,6 @@ public class ProductController {
 		
 		ProductDaoInterface dao=new ProductDaoImpl();
 		int result=dao.updateProductById(p);
-		
 		model.addAttribute("result_update",result);
 		return "redirect:/viewAllProduct";
 	}

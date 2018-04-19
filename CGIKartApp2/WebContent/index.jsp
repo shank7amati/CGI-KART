@@ -161,17 +161,17 @@ body {
 
 <div class="topnav">
 <a href="index.jsp">Home</a>
-  <a class="active" href="Lifestyle.jsp">Lifestyle</a>
-  <a href="Electronics.jsp">Electronics</a>
-  <a href="Fashion.jsp">Fashion</a>
-  <a href="Stationary.jsp">Stationary</a>
+  <a class="active" href="viewProduct?prod_category=homeapp">Home Appliances</a>
+  <a href="viewProduct?prod_category=electronics">Electronics</a>
+  <a href="viewProduct?prod_category=fashion">Fashion</a>
+  <a href="viewProduct?prod_category=stationary">Stationary</a>
   
 </div>
 
 
 <div class="column"> 
   <div class="row">
-  <a href="Fashion.jsp">
+  <a href="viewProduct?prod_category=homeapp">
     <img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\fashion.jpg"  style="width:100%">
     </a>
     <a href="Stationary.jsp">
@@ -182,10 +182,10 @@ body {
   
 <div class="column"> 
   <div class="row">
-  <a href="Electronics.jsp">
+  <a href="viewProduct?prod_category=electronics">
      <img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\gadgets.jpg" id="ec" onMouseover="displayQuote();" style="width:100%">
      </a>
-    <a href="Lifestyle.jsp">
+    <a href="viewProduct?prod_category=homeapp">
     <img src="C:\Users\CGI\Desktop\Shopping\WebContent\images\home.jpg" style="width:100%">
     </a>
    
