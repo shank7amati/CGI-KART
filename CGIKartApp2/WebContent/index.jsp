@@ -147,14 +147,14 @@ body {
 </style>
 </head>
 <body style="font-family:Verdana;">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
    <jsp:include page="header.jsp"></jsp:include>
   
   
   <br>
- 
- <form action="login.jsp">
- <input id="button" type="submit"  value="Login">
+ <form action="logout">
+ <input id="button" type="submit"  value="Logout">
  </form> 
   
 <input id="buttonCart" type="submit"  value="Cart">
@@ -171,11 +171,12 @@ body {
 
 <div class="column"> 
   <div class="row">
-  <a href="viewProduct?prod_category=homeapp">
-    <img  src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\fashion.jpg"  style="width:100%">
+  <a href="viewProduct?prod_category=fashion">
+    <img  src="http://www.hdwallpaperup.com/wp-content/uploads/2015/07/Red-Dress-Fashion-Girl-Desktop-Background-1920x1440.jpg"
+      style="width:100%">
     </a>
-    <a href="Stationary.jsp">
-    <img src="C:\Users\CGI\Desktop\Shopping\WebContent\images\stationary.jpg" style="width:100%">
+    <a href="viewProduct?prod_category=stationary">
+    <img src="https://pbs.twimg.com/media/DIialAgXUAEBDV1.jpg" style="width:100%">
     </a>
     </div>
   </div>
@@ -183,10 +184,10 @@ body {
 <div class="column"> 
   <div class="row">
   <a href="viewProduct?prod_category=electronics">
-     <img src="E:\Java Assignmentshank\CGIKartApp2\WebContent\images\gadgets.jpg" id="ec" onMouseover="displayQuote();" style="width:100%">
+     <img src="https://techno4use.files.wordpress.com/2014/07/cropped-cropped-gadgets-hd-wallpaper31.jpg" id="ec" onMouseover="displayQuote();" style="width:100%">
      </a>
     <a href="viewProduct?prod_category=homeapp">
-    <img src="C:\Users\CGI\Desktop\Shopping\WebContent\images\home.jpg" style="width:100%">
+    <img src="http://images.all-free-download.com/images/graphiclarge/fine_home_interior_picture_5_167626.jpg" style="width:100%">
     </a>
    
   </div>

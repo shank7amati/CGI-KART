@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<c:if test="${role =='admin'}">
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,3 +38,7 @@ Enter product category to view:
 <!-- <a href="deleteprod.jsp" >delete products</a> -->
 </body>
 </html>
+</c:if>
+<c:if test="${role !='admin'}">
+<h1>UnAuthorized</h1>
+</c:if>

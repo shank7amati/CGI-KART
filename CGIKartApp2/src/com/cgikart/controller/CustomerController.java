@@ -35,6 +35,13 @@ public class CustomerController {
 		else
 			return "login";
 	}
+	@RequestMapping(value="/logout")
+	public String logoutAll(ModelMap model, HttpServletRequest request) 
+	{
+		HttpSession session= request.getSession();
+		session.invalidate();
+		return "login";
+	}
 	@RequestMapping(value="/Adminlogin")
 	public String loginAdmin(@RequestParam("username") String username,
 			@RequestParam("password") String password ,ModelMap model, HttpServletRequest request) 

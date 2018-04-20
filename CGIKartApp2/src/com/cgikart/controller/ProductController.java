@@ -22,49 +22,40 @@ public class ProductController {
 
 	
 	@RequestMapping(value="/createProduct")
-	public String createProduct(@RequestParam("prod_name") String prod_name,@RequestParam("prod_price") int prod_price ,@RequestParam("prod_desc") String prod_desc,@RequestParam("prod_category") String prod_category, @RequestParam("stock") int stock,@RequestParam("path") String path,ModelMap model) 
+	public String createProduct(@RequestParam("prod_name") String prod_name,@RequestParam("prod_price") int prod_price ,
+			@RequestParam("prod_desc") String prod_desc,@RequestParam("prod_category") String prod_category, 
+			@RequestParam("stock") int stock,@RequestParam("path") String path,ModelMap model,HttpServletRequest request) 
 	{
-		Product p=new Product();
 		
-		p.setProd_name(prod_name);
-		p.setProd_price(prod_price);
-		p.setProd_desc(prod_desc);
-		p.setProd_category(prod_category);
-		p.setStock(stock);
-		p.setPath(path);
 		
-		ProductDaoInterface dao=new ProductDaoImpl();
-		int result=dao.createProduct(p);
-		
-		model.addAttribute("result",result);
-		return "redirect:/viewAllProduct";  
+		HttpSession session= request.getSession();
+		String role=(String) session.getAttribute("role");
+		model.addAttribute("role",role);
+		if(role.equals("admin")){
+			Product p=new Product();
+			p.setProd_name(prod_name);
+			p.setProd_price(prod_price);
+			p.setProd_desc(prod_desc);
+			p.setProd_category(prod_category);
+			p.setStock(stock);
+			p.setPath(path);
+			
+			ProductDaoInterface dao=new ProductDaoImpl();
+			int result=dao.createProduct(p);
+			
+			model.addAttribute("result",result);
+			return "redirect:/viewAllProduct";  
+			}
+		else{
+			return "noaccess";
+		}
 	}
 	
 	
-//	
-//	@RequestMapping(value="/adminlogin")
-//	public String adminLogin(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap model)
-//	{
-//		if(username.equals("admin")&&password.equals("admin"))
-//		{
-//			return "Adminpage";
-//			 //temp++;
-//		}
-//		
-//		else
-//     	{
-////			String msg2=null;
-////			model.addAttribute("invalid username or password", msg2);
-//			return "index";
-//			
-//		}
-//		//System.out.println(" inside login method");
-//		//return "customeradded";
-//	}
 	
 	@RequestMapping(value="/viewProduct")
 
-	public String viewProduct(@RequestParam("prod_category") String prod_category,ModelMap model)
+	public String viewProduct(@RequestParam("prod_category") String prod_category,ModelMap model,HttpServletRequest request)
 
 	{
 		ProductDaoInterface dao=new ProductDaoImpl();
@@ -84,14 +75,14 @@ public class ProductController {
 		HttpSession session= request.getSession();
 		String role=(String) session.getAttribute("role");
 		model.addAttribute("role",role);
-		System.out.println(role);
 		return "vprod";
 	}
 
 
 	@RequestMapping(value="/searchProduct")
-	public String searchProduct(@RequestParam("prod_name") String prod_name,ModelMap model)
+	public String searchProduct(@RequestParam("prod_name") String prod_name,ModelMap model,HttpServletRequest request)
 	{
+		
 		ProductDaoInterface dao=new ProductDaoImpl();
 		Product prd=dao.searchProductByName(prod_name);
 				
@@ -101,21 +92,39 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/deleteProduct")
-	public String deleteProduct(@RequestParam("prod_id") String prod_id,ModelMap model)
+	public String deleteProduct(@RequestParam("prod_id") String prod_id,ModelMap model,HttpServletRequest request)
 	{
-		ProductDaoInterface dao=new ProductDaoImpl();
-		int result=dao.deleteProductById(Integer.parseInt(prod_id));
-		model.addAttribute("result_delete",result);
-		return "redirect:/viewAllProduct";
+		HttpSession session= request.getSession();
+		String role=(String) session.getAttribute("role");
+		model.addAttribute("role",role);
+		if(role.equals("admin")){
+			ProductDaoInterface dao=new ProductDaoImpl();
+			int result=dao.deleteProductById(Integer.parseInt(prod_id));
+			model.addAttribute("result_delete",result);
+			return "redirect:/viewAllProduct";
+		}
+		else{
+			return "noaccess";
+		}
+			
 	}
 	@RequestMapping(value="/searchProductById")
-	public String searchProductById(@RequestParam("prod_id") String prod_id,ModelMap model)
+	public String searchProductById(@RequestParam("prod_id") String prod_id,ModelMap model,HttpServletRequest request)
 	{
 		ProductDaoInterface dao=new ProductDaoImpl();
 		Product prd=dao.searchProductById(Integer.parseInt(prod_id));
 		model.addAttribute("product",prd);
 		
 		return "updateproduct";
+	}
+	@RequestMapping(value="/searchById")
+	public String searchById(@RequestParam("prod_id") String prod_id,ModelMap model,HttpServletRequest request)
+	{
+		ProductDaoInterface dao=new ProductDaoImpl();
+		Product prd=dao.searchProductById(Integer.parseInt(prod_id));
+		model.addAttribute("product",prd);
+		
+		return "product_details";
 	}
 
 	@RequestMapping(value="/updateProduct")
@@ -125,20 +134,27 @@ public class ProductController {
 			@RequestParam("stock") int stock,@RequestParam("path") String path,
 			ModelMap model, HttpServletRequest request) 
 	{
-		
-		Product p=new Product();
-		p.setProd_id(prod_id);
-		p.setProd_name(prod_name);
-		p.setProd_price(prod_price);
-		p.setProd_desc(prod_desc);
-		p.setProd_category(prod_category);
-		p.setStock(stock);
-		p.setPath(path);
-		
-		ProductDaoInterface dao=new ProductDaoImpl();
-		int result=dao.updateProductById(p);
-		model.addAttribute("result_update",result);
-		return "redirect:/viewAllProduct";
+		HttpSession session= request.getSession();
+		String role=(String) session.getAttribute("role");
+		model.addAttribute("role",role);
+		if(role.equals("admin")){
+			Product p=new Product();
+			p.setProd_id(prod_id);
+			p.setProd_name(prod_name);
+			p.setProd_price(prod_price);
+			p.setProd_desc(prod_desc);
+			p.setProd_category(prod_category);
+			p.setStock(stock);
+			p.setPath(path);
+			
+			ProductDaoInterface dao=new ProductDaoImpl();
+			int result=dao.updateProductById(p);
+			model.addAttribute("result_update",result);
+			return "redirect:/viewAllProduct";
+		}
+		else{
+			return "noaccess";
+		}
 	}
 
 

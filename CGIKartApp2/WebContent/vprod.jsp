@@ -37,6 +37,7 @@
                 <th>PRICE</th>
 				<th>DESCRIPTION</th>
 				<th>CATEGORY</th>
+				<th>VIEW</th>
 				<c:if test="${role =='admin'}">
 				<th>STOCK</th>         
 				<th>DELETE</th>       
@@ -48,6 +49,8 @@
 
 <spring:url value="/deleteProduct?prod_id=${product.prod_id}" var="deleteUrl" /> 
 <spring:url value="/searchProductById?prod_id=${product.prod_id}" var="updateUrl" /> 
+<spring:url value="/searchById?prod_id=${product.prod_id}" var="viewUrl" /> 
+
                 <tr>
 					<td><img width=100 height=100 src="${product.path }"/></td>
                     <td><c:out value="${product.prod_id}" /></td>
@@ -55,6 +58,7 @@
                     <td><c:out value="${product.prod_price}" /></td>
 					<td><c:out value="${product.prod_desc}" /></td>
 					<td><c:out value="${product.prod_category}" /></td>
+				    <td><input type="button" onclick="location.href='${viewUrl}'" value="view "></td>
 					<c:if test="${role =='admin'}">
 					<td><c:out value="${product.stock}" /></td>                           
 					<td><input type="button" onclick="location.href='${deleteUrl}'" value="delete "></td>
