@@ -1,5 +1,6 @@
 package com.cgikart.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -156,8 +157,40 @@ public class ProductController {
 			return "noaccess";
 		}
 	}
-
-
+	@RequestMapping(value="/addCart")
+	public String addCart(@RequestParam("prod_id") int prod_id,ModelMap model,HttpServletRequest request)
+	{
+		HttpSession session= request.getSession();
+		String role=(String) session.getAttribute("role");
+		ArrayList<Integer> cart_prd_ids;
+		if (session.getAttribute("ProductsInCart") == null){
+			
+			cart_prd_ids = new ArrayList<Integer>();
+			cart_prd_ids.add(prod_id);
+			session.setAttribute("ProductsInCart",cart_prd_ids);
+		}
+		else{
+			cart_prd_ids=(ArrayList<Integer>)session.getAttribute("ProductsInCart");
+			cart_prd_ids.add(prod_id);			
+		}
+		model.addAttribute("role",role);
+		
+		return "productadded";
+		
+	}
+	@RequestMapping(value="/viewCart")
+	public String viewCart(ModelMap model,HttpServletRequest request)
+	{
+		HttpSession session= request.getSession();
+		ArrayList<Integer> cart_prd_ids=(ArrayList<Integer>) session.getAttribute("ProductsInCart");	
+		ProductDaoInterface dao=new ProductDaoImpl();
+		System.out.println("cart "+cart_prd_ids);
+		List<Product> prod_list=dao.viewCart(cart_prd_ids);		
+		model.addAttribute("prod_list",prod_list);
+		String role=(String) session.getAttribute("role");
+		model.addAttribute("role",role);
+		return "vprod";
+	}
 }
 
 	

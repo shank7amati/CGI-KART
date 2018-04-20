@@ -1,6 +1,7 @@
 package com.cgikart.dao;
 import com.cgikart.util.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -183,6 +184,30 @@ public class ProductDaoImpl implements ProductDaoInterface {
 			session.close();
 		}
 		return result;
+	}
+
+
+	public List<Product> viewCart(ArrayList<Integer> cart_prd_ids) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		List<Product> cartProducts=null;
+		try {
+			transaction = session.beginTransaction();
+			String hql = "FROM Product  WHERE prod_id IN :prod_ids";
+			Query query = session.createQuery(hql);
+			query.setParameter("prod_ids", cart_prd_ids);
+			cartProducts=query.getResultList();
+			
+		}
+		catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return cartProducts;
 	}
 
 }

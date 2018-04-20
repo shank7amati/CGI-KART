@@ -156,9 +156,10 @@ body {
  <form action="logout">
  <input id="button" type="submit"  value="Logout">
  </form> 
+   <form action="viewCart">
   
 <input id="buttonCart" type="submit"  value="Cart">
-
+</form>
 <div class="topnav">
 <a href="index.jsp">Home</a>
   <a class="active" href="viewProduct?prod_category=homeapp">Home Appliances</a>

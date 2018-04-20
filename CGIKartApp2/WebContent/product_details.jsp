@@ -13,5 +13,10 @@
 <h3>Price</h3>${product.prod_price}
 <h3>Description</h3>${product.prod_desc}
 <h3>Category</h3>${product.prod_category}
+<form action="addCart">
+<input type="hidden" name="prod_id" value="${product.prod_id }"/>
+
+<input type="submit" value="Add to cart"/>
+</form>
 </body>
 </html>
