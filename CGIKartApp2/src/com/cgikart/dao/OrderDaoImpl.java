@@ -24,7 +24,6 @@ public class OrderDaoImpl implements OrderDaoInterface{
 		Transaction transaction = null;
 		List<Product> prodList=null;
 		List<Order> orderList =new ArrayList<Order>();
-		Order order= new Order();
 		try {
 			transaction = session.beginTransaction();
 			String hql = "FROM Product  WHERE prod_id IN :prod_ids";
@@ -37,20 +36,17 @@ public class OrderDaoImpl implements OrderDaoInterface{
 			}
 			System.out.println("cust_id "+cust_id+"prod_list"+prodList.hashCode());
 			for(int prod_id:prod_ids){
-				
-				order.setOrdId(cust_id+(int)prodList.hashCode());
+				Order order= new Order();
+				order.setOrdId(cust_id+(((int)prodList.hashCode() < 0) ?  (-1*(int)prodList.hashCode()):(int)prodList.hashCode()));
 				order.setCust_id(cust_id);
 				order.setProd_id(prod_id);
-				order.setTotalCost(sum);
-				orderList.add(order);
-				
+				order.setTotalCost(sum);				
+				session.save(order);
 				}
-			for(Order order1:orderList)
-			{
-				session.save(order1);
-			}
+			
 			
 			transaction.commit();
+		
 
 		} catch (HibernateException e) {
 			transaction.rollback();
