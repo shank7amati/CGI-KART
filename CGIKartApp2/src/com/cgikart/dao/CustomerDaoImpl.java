@@ -42,12 +42,13 @@ public class CustomerDaoImpl implements CustomerDaoInterface {
 		}
 
 	@Override
-	public boolean loginCustomer(String username, String password) {
+	public int loginCustomer(String username, String password) {
 		// TODO Auto-generated method stub
 		boolean userFound = false;
 		//Query using Hibernate Query Language
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
+		Customer result=null;
 		try {
 			transaction = session.beginTransaction();
 		
@@ -56,25 +57,31 @@ public class CustomerDaoImpl implements CustomerDaoInterface {
 		query.setParameter("username",username);
 		query.setParameter("password",password);
 		
-		 Customer result=(Customer) query.getSingleResult();
-		 System.out.println("login "+result);
+		 result=(Customer) query.getSingleResult();
 			if ((result != null)) {
 				userFound= true;
 				transaction.commit();
+				return result.getId();
+			}
+			else{
+				return -1;
 			}
 		}
 		catch (javax.persistence.NoResultException e) {
 			transaction.rollback();
 			e.printStackTrace();
+			return -1;
 		} 
 		catch(HibernateException e){
 			transaction.rollback();
 			e.printStackTrace();
+			return -1;
 		}
 		
 		finally {
-		session.close();}
-		return userFound;
+		session.close();
+		}
+		
 	}
 
 	

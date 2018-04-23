@@ -23,12 +23,13 @@ public class CustomerController {
 	{
 		
 		CustomerDaoInterface dao=new CustomerDaoImpl();
-		boolean result=dao.loginCustomer(username, password);
-		model.addAttribute("login_error",!result);           
-		if(result)
+		int result=dao.loginCustomer(username, password);
+		System.out.println("Login "+result);
+		model.addAttribute("login_error",!(result!=1));           
+		if(result!=-1)
 		{
 			HttpSession session= request.getSession();
-			session.setAttribute("userLoginSession", username);
+			session.setAttribute("userLoginSession", result);
 			session.setAttribute("role", "customer");
 			return "index";
 		}

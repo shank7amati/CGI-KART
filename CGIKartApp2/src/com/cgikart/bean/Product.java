@@ -1,5 +1,8 @@
 package com.cgikart.bean;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Product {
 	
 	private int prod_id;
@@ -51,6 +54,9 @@ public class Product {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+	 @ManyToOne
+	    @JoinColumn(name="ordId", nullable=false)
+	    private Order order;
 	
 
 }

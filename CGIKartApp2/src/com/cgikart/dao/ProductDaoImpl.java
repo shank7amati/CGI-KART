@@ -106,7 +106,7 @@ public class ProductDaoImpl implements ProductDaoInterface {
 		transaction = session.beginTransaction();
 		String hql = "FROM Product  WHERE prod_name like :prod_name";
 		Query query = session.createQuery(hql);
-		query.setParameter("prod_name", prod_name);//    setParameter("cat", category);   
+		query.setParameter("prod_name", prod_name);
 		
 	 result=(Product) query.getSingleResult();
 	

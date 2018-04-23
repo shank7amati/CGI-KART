@@ -68,6 +68,10 @@
             </c:forEach>
         </table>
     </div>
+<c:if test="${inCart==true}">
+<form action="checkoutCart"><input type="submit" value="Checkout">
+</form>
+</c:if>
 
 </body>
 </html>

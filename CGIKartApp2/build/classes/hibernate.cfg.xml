@@ -15,5 +15,6 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping resource="com/cgikart/bean/Customer.hbm.xml"/>
         <mapping resource="com/cgikart/bean/Product.hbm.xml"/> 
+		<mapping resource="com/cgikart/bean/Order.hbm.xml"/> 
     </session-factory>
 </hibernate-configuration>

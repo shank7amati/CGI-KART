@@ -16,6 +16,7 @@ import com.cgikart.dao.ProductDaoImpl;
 //import com.cgikart.dao.CustomerDaoImpl;
 //import com.cgikart.dao.CustomerDaoInterface;
 import com.cgikart.dao.ProductDaoInterface;
+import com.sun.java_cup.internal.runtime.Symbol;
 
 @Controller
 public class ProductController {
@@ -184,11 +185,13 @@ public class ProductController {
 		HttpSession session= request.getSession();
 		ArrayList<Integer> cart_prd_ids=(ArrayList<Integer>) session.getAttribute("ProductsInCart");	
 		ProductDaoInterface dao=new ProductDaoImpl();
-		System.out.println("cart "+cart_prd_ids);
-		List<Product> prod_list=dao.viewCart(cart_prd_ids);		
+		List<Product> prod_list=dao.viewCart(cart_prd_ids);	
+//		System.out.println("LiST"+prod_list);
 		model.addAttribute("prod_list",prod_list);
+//		session.setAttribute("cartList",prod_list );
 		String role=(String) session.getAttribute("role");
 		model.addAttribute("role",role);
+		model.addAttribute("inCart",true);
 		return "vprod";
 	}
 }
