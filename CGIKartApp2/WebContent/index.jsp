@@ -153,14 +153,21 @@ body {
   
   
   <br>
-  
+  <c:if test="${not empty role}">
  <form action="logout">
  <input id="button" type="submit"  value="Logout">
  </form> 
    <form action="viewCart">
-  
-<input id="buttonCart" type="submit"  value="Cart">
+   <input id="buttonCart" type="submit"  value="Cart">
 </form>
+   </c:if>
+   <c:if test="${empty role}">
+ <form action="login.jsp">
+ <input id="button" type="submit"  value="Login">
+ </form> 
+   </c:if>
+  
+
 <div class="topnav">
 <a href="index.jsp">Home</a>
   <a class="active" href="viewProduct?prod_category=homeapp">Home Appliances</a>

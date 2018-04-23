@@ -54,9 +54,6 @@ public class Product {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	 @ManyToOne
-	    @JoinColumn(name="ordId", nullable=false)
-	    private Order order;
 	
 
 }

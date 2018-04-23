@@ -9,6 +9,8 @@ import com.cgikart.bean.Product;
 public interface OrderDaoInterface {
 
 
-	public Order checkoutCart(ArrayList<Integer> cart_prd_ids, int attribute);
+	public boolean checkoutCart(ArrayList<Integer> cart_prd_ids, int cust_id);
+
+	public List<Order> viewOrders(int cust_id);
 	
 }
