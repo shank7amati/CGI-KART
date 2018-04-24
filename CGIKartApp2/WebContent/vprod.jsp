@@ -9,11 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:include page="header.jsp"></jsp:include>
+  <c:if test="${role!='admin'}">
+
+<jsp:include page="menubar.jsp"></jsp:include>
+</c:if>
+
 
 <form action="searchProduct">
 		<input type="text" name="prod_name" >
@@ -28,7 +32,13 @@
     <div align="center">
         <table border="1" cellpadding="5">
             <caption>  
+					
+					<c:if test="${inCart==true}">
+					<h2>Cart</h2>
+					</c:if>
+					<c:if test="${empty inCart}">
 					<h2>List of Products</h2>
+					</c:if>
 			</caption>
             <tr>
 				<th>PRODUCT IMAGE</th>

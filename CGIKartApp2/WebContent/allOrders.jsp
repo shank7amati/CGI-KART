@@ -10,6 +10,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="menubar.jsp"></jsp:include>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -23,7 +24,7 @@
     <div align="center">
         <table border="1" cellpadding="5">
             <caption>  
-					<h2>List of Products</h2>
+					<h2>List of Orders</h2>
 			</caption>
             <tr>
 				<th>Order Id</th>

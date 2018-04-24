@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 <style>
 .topnav {
     background-color: #333;
@@ -18,6 +19,16 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+}
+
+/* Style the categories heading */
+.topnav1  a{
+    float: left;
+    color: "black"   ;
+    text-align: top;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 15px;
 }
 
 /* Change the color of links on hover */
@@ -117,7 +128,15 @@ body {
     clear: both;
 }
 
-
+.menu {
+  float: left;
+  width: 100%;
+}
+.menuitem {
+  padding: 10px;
+  margin-top: 8px;
+  border-bottom: 1px solid #f1f1f1;
+}
 .main {
  
   width: 50%;
@@ -145,9 +164,12 @@ body {
 
 
 </style>
+
 </head>
-<body style="font-family:Verdana;">
-   <jsp:include page="header.jsp"></jsp:include>
+<body>
+
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -166,12 +188,11 @@ body {
    </c:if>
    <c:if test="${empty role}">
  <form action="login.jsp">
- <input id="button" type="submit"  value="Login">
+ <input type="submit"  value="Login">
  </form> 
    </c:if>
-  
-
-<div class="topnav">
+   
+   <div class="topnav">
 <a href="index.jsp">Home</a>
   <a class="active" href="viewProduct?prod_category=homeapp">Home Appliances</a>
   <a href="viewProduct?prod_category=electronics">Electronics</a>
@@ -179,38 +200,6 @@ body {
   <a href="viewProduct?prod_category=stationary">Stationary</a>
   
 </div>
-
-
-<div class="column"> 
-  <div class="row">
-  <a href="viewProduct?prod_category=fashion">
-    <img  src="http://www.hdwallpaperup.com/wp-content/uploads/2015/07/Red-Dress-Fashion-Girl-Desktop-Background-1920x1440.jpg"
-      style="width:100%">
-    </a>
-    <a href="viewProduct?prod_category=stationary">
-    <img src="https://pbs.twimg.com/media/DIialAgXUAEBDV1.jpg" style="width:100%">
-    </a>
-    </div>
-  </div>
-  
-<div class="column"> 
-  <div class="row">
-  <a href="viewProduct?prod_category=electronics">
-     <img src="https://techno4use.files.wordpress.com/2014/07/cropped-cropped-gadgets-hd-wallpaper31.jpg" id="ec" onMouseover="displayQuote();" style="width:100%">
-     </a>
-    <a href="viewProduct?prod_category=homeapp">
-    <img src="http://images.all-free-download.com/images/graphiclarge/fine_home_interior_picture_5_167626.jpg" style="width:100%">
-    </a>
-   
-  </div>
-  
-
- </div>
-	
- <img  src="C:\Users\CGI\Desktop\Shopping\WebContent\images\log.jpg" height="200" width="1325 ">
- 
- 
-
 
 </body>
 </html>

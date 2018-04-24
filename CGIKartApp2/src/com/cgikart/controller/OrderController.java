@@ -32,7 +32,7 @@ public class OrderController {
 			session.removeAttribute("ProductsInCart");
 		}
 		model.addAttribute("order",result);
-		return "orderDetails";
+		return "redirect:/viewOrders";
 	}
 	@RequestMapping(value="/viewOrders")
 	public String viewOrders(ModelMap model,HttpServletRequest request)

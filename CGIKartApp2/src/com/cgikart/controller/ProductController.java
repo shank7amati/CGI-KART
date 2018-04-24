@@ -176,7 +176,7 @@ public class ProductController {
 		}
 		model.addAttribute("role",role);
 		
-		return "productadded";
+		return "redirect:/viewCart";
 		
 	}
 	@RequestMapping(value="/viewCart")

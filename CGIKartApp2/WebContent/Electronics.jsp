@@ -170,7 +170,7 @@ body {
 </head>
 <body style="font-family:Verdana;">
 <jsp:include page="header.jsp"></jsp:include>
-
+<jsp:include page="menubar.jsp"></jsp:include>
   <br>
 
 <input id="button" type="button" onMouseOver="User Login" value="Login"> 
